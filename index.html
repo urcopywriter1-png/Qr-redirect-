@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+  <meta charset="UTF-8">
+
+  <title>Redirecting...</title>
+
+  <script>
+
+    // List of reward URLs and their probabilities
+
+    const rewards = [
+
+      { url: "https://www.canva.com/design/DAGwLSkiHoc/bU_72c6OWj-C00clx-5ntg/edit?utm_content=DAGwLSkiHoc&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton", probability: 50 }, // 50%
+
+      { url: "https://www.canva.com/design/DAGwLeFg5l4/n4C9CHwNsCcvQOALP9-g7A/edit?utm_content=DAGwLeFg5l4&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton", probability: 30 }, // 30%
+
+      { url: "https://www.canva.com/design/DAGwLa1QnSY/7hF9ayblqv_ukiNOhg7s6A/edit?utm_content=DAGwLa1QnSY&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton", probability: 20 }  // 20%
+
+    ];
+
+    function pickReward() {
+
+      let total = rewards.reduce((sum, r) => sum + r.probability, 0);
+
+      let random = Math.random() * total;
+
+      for (let r of rewards) {
+
+        if (random < r.probability) return r.url;
+
+        random -= r.probability;
+
+      }
+
+    }
+
+    window.onload = function() {
+
+      window.location.href = pickReward();
+
+    };
+
+  </script>
+
+</head>
+
+<body>
+
+  Redirecting you to your reward...
+
+</body>
+
+</html>
+
